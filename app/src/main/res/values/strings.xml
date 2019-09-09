@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Riyasewana</string>
+    <string name="search_placeholder">Search vehicles</string>
+    <string name="img_desc">Vehicle Image</string>
+    <string name="pin">Pin</string>
+    <string name="call">Call</string>
+    <string name="advanced_search">Filter</string>
+    <string name="price_range_text">Price Range</string>
+    <string name="search">Search</string>
+    <string name="share">Share</string>
+    <string name="help">Help &amp; Feedback</string>
+    <string name="price_lkr">LKR 1 Million</string>
+    <string name="brand_hint">Select brand</string>
+    <string name="model_hint">Select model</string>
+    <string name="sample">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tempus posuere quam, in ultrices dolor accumsan id. Duis lobortis quis nisl fringilla dapibus. Nulla ornare odio quis erat ultrices, ac ultrices mauris venenatis. Mauris sed leo nulla. Integer dolor ipsum, porttitor eget dui quis, mattis vestibulum neque.</string>
+</resources>
