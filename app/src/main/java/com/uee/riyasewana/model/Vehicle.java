@@ -4,12 +4,15 @@ public class Vehicle {
 
     private int imageDrawable;
     private int imageWideDrawable;
+    private int id;
     private String name;
     private String price;
     private String location;
     private String description;
     private String email;
     private String telephone;
+
+    public Vehicle() {}
 
     public Vehicle(int imageDrawable, int imageWideDrawable, String name, String price, String location, String description, String email, String telephone) {
         this.imageDrawable = imageDrawable;
@@ -86,11 +89,20 @@ public class Vehicle {
         this.telephone = telephone;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return "Vehicle{" +
                 "imageDrawable=" + imageDrawable +
                 ", imageWideDrawable=" + imageWideDrawable +
+                ", id=" + id +
                 ", name='" + name + '\'' +
                 ", price='" + price + '\'' +
                 ", location='" + location + '\'' +
