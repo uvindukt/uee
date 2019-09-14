@@ -1,48 +1,63 @@
-package com.uee.riyasewana;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.view.menu.MenuBuilder;
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+package com.uee.riyasewana.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.TextView;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.uee.riyasewana.R;
+import com.uee.riyasewana.activity.MainActivity;
+import com.uee.riyasewana.activity.SearchVehicleActivity;
+import com.uee.riyasewana.activity.VehicleActivity;
 import com.uee.riyasewana.adapter.OnVehicleListener;
 import com.uee.riyasewana.adapter.VehicleRecyclerAdapter;
 import com.uee.riyasewana.model.Vehicle;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
-public class MainActivity extends AppCompatActivity implements OnVehicleListener {
-
+public class VehicleFragment extends Fragment implements OnVehicleListener {
     public static final String EXTRA_VEHICLE_POSITION = "com.uee.riyasewana.VEHICLE";
     public static ArrayList<Vehicle> VEHICLES;
-    private VehicleRecyclerAdapter adapter;
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_vehicle, container, false);
+        RecyclerView recyclerView = view.findViewById(R.id.listVehicles);
+        VehicleRecyclerAdapter adapter = new VehicleRecyclerAdapter(VEHICLES, this);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+
+                if(!recyclerView.canScrollVertically(-1)) {
+                    Objects.requireNonNull(((MainActivity) Objects.requireNonNull(getActivity())).getSupportActionBar()).setElevation(0);
+                } else {
+                    Objects.requireNonNull(((MainActivity) Objects.requireNonNull(getActivity())).getSupportActionBar()).setElevation(50);
+                }
+            }
+        });
+        return view;
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        final Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        TextView toolBarTitle = findViewById(R.id.toolbar_title);
-        toolBarTitle.setText(toolbar.getTitle());
-
-        if (getSupportActionBar() != null)
-            getSupportActionBar().setDisplayShowTitleEnabled(false);
-
         VEHICLES = new ArrayList<>();
-
         VEHICLES.add(new Vehicle(R.drawable.raptor, R.drawable.raptor_wide,"Ford Raptor F-150", "Rs. 180, 000, 000/=", "Galle - Sri Lanka", getString(R.string.sample), "uvindu.sanjana@gmail.com", "0771003087"));
         VEHICLES.add(new Vehicle(R.drawable.patrol, R.drawable.patrol_wide,"Nissan Patrol", "Rs. 9, 800, 000 /=", "Colombo - Sri Lanka", getString(R.string.sample), "john.c@gmail.com", "0716539248"));
         VEHICLES.add(new Vehicle(R.drawable.wrangler, R.drawable.wrangler_wide,"Jeep Wrangler Rubicon", "Rs. 22, 000, 000/=", "Kandy - Sri Lanka", getString(R.string.sample), "nimal.s@gmail.com", "0771231234"));
@@ -52,51 +67,32 @@ public class MainActivity extends AppCompatActivity implements OnVehicleListener
         VEHICLES.add(new Vehicle(R.drawable.laferrari, R.drawable.laferrari_wide,"Ferrari LaFerrari", "Rs. 85, 500, 000/=", "Kandy - Sri Lanka", getString(R.string.sample), "paul.r@gmail.com", "0775869423"));
         VEHICLES.add(new Vehicle(R.drawable.huracan, R.drawable.huracan_wide,"Lamborghini Huracan", "Rs. 60, 430, 000/=", "Galle - Sri Lanka", getString(R.string.sample), "sri.h@gmail.com", "0725682469"));
         VEHICLES.add(new Vehicle(R.drawable.a6_avant, R.drawable.a6_avant_wide,"Audi A6 Avant", "Rs. 1, 200, 000/=", "Colombo - Sri Lanka", getString(R.string.sample), "kamal.g@gmail.com", "0775689324"));
-
-        RecyclerView recyclerView = findViewById(R.id.listVehicles);
-        adapter = new VehicleRecyclerAdapter(VEHICLES, this);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-
-                if(!recyclerView.canScrollVertically(-1)) {
-                    toolbar.setElevation(0);
-                } else {
-                    toolbar.setElevation(50);
-                }
-
-            }
-        });
-
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home)
-            finish();
-        if (item.getItemId() == R.id.facebook)
-            Toast.makeText(getApplication(), "Share", Toast.LENGTH_LONG).show();
-        if (item.getItemId() == R.id.twitter)
-            Toast.makeText(getApplication(), "Help & Feedback", Toast.LENGTH_LONG).show();
-        if (item.getItemId() == R.id.search)
-            startActivity(new Intent(this, SearchActivity.class));
-        return super.onOptionsItemSelected(item);
     }
 
     @Override
     public void onVehicleClick(int position) {
-        Intent intent = new Intent(this, VehicleActivity.class);
-        intent.putExtra(MainActivity.EXTRA_VEHICLE_POSITION, position);
+        Intent intent = new Intent(getContext(), VehicleActivity.class);
+        intent.putExtra(VehicleFragment.EXTRA_VEHICLE_POSITION, position);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         startActivity(intent);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.menu, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home)
+            //
+        if (item.getItemId() == R.id.facebook)
+            Toast.makeText(getContext(), "Share", Toast.LENGTH_LONG).show();
+        if (item.getItemId() == R.id.twitter)
+            Toast.makeText(getContext(), "Help & Feedback", Toast.LENGTH_LONG).show();
+        if (item.getItemId() == R.id.search)
+            startActivity(new Intent(getContext(), SearchVehicleActivity.class));
+        return super.onOptionsItemSelected(item);
     }
 }
