@@ -10,7 +10,18 @@
     <string name="share">Share</string>
     <string name="help">Help &amp; Feedback</string>
     <string name="price_lkr">LKR 1 Million</string>
+    <string name="price_lkr_2">LKR</string>
     <string name="brand_hint">Select brand</string>
     <string name="model_hint">Select model</string>
     <string name="sample">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tempus posuere quam, in ultrices dolor accumsan id. Duis lobortis quis nisl fringilla dapibus. Nulla ornare odio quis erat ultrices, ac ultrices mauris venenatis. Mauris sed leo nulla. Integer dolor ipsum, porttitor eget dui quis, mattis vestibulum neque.</string>
+    <string name="home">Home</string>
+    <string name="vehicle">Vehicle</string>
+    <string name="part">Part</string>
+    <string name="account">Account</string>
+    <string name="terms">Terms</string>
+    <string name="search_parts">Search Parts</string>
+    <string name="select_category">Select Category</string>
+    <string name="select_location">Select Location</string>
+    <string name="select_type">Select Type</string>
+    <string name="select_date">Select Date</string>
 </resources>

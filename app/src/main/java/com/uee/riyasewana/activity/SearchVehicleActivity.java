@@ -1,4 +1,4 @@
-package com.uee.riyasewana;
+package com.uee.riyasewana.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -16,13 +16,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.jaygoo.widget.RangeSeekBar;
+import com.uee.riyasewana.R;
 
-public class SearchActivity extends AppCompatActivity {
+public class SearchVehicleActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search);
+        setContentView(R.layout.activity_search_vehicle);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -75,5 +76,4 @@ public class SearchActivity extends AppCompatActivity {
         }
         return super.dispatchTouchEvent(event);
     }
-
 }

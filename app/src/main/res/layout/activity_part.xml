@@ -29,10 +29,10 @@
     </androidx.appcompat.widget.Toolbar>
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/vehicle_card"
+        android:id="@+id/part_card"
         style="@style/Widget.MaterialComponents.CardView"
-        android:layout_width="667dp"
-        android:layout_height="175dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
@@ -44,15 +44,15 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
         <ImageView
-            android:id="@+id/vehicle_img"
-            android:layout_width="373dp"
-            android:layout_height="match_parent"
+            android:id="@+id/part_img"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
             android:contentDescription="@string/img_desc" />
 
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/vehicle_details_card"
+        android:id="@+id/part_details_card"
         style="@style/Widget.MaterialComponents.CardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -65,7 +65,7 @@
         app:contentPadding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vehicle_card">
+        app:layout_constraintTop_toBottomOf="@+id/part_card">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -73,7 +73,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/vehicle_name"
+                android:id="@+id/part_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
@@ -81,7 +81,7 @@
                 android:textSize="32sp" />
 
             <TextView
-                android:id="@+id/vehicle_price"
+                android:id="@+id/part_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
@@ -92,7 +92,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/vehicle_location"
+                android:id="@+id/part_location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
@@ -103,7 +103,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/email"
+                android:id="@+id/part_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
@@ -114,7 +114,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/telephone"
+                android:id="@+id/part_telephone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="18dp"
@@ -125,7 +125,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/vehicle_description"
+                android:id="@+id/part_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -134,7 +134,7 @@
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/pin_button"
+        android:id="@+id/part_pin_button"
         style="@style/Widget.MaterialComponents.Button"
         android:layout_width="120dp"
         android:layout_height="55dp"
@@ -163,7 +163,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/pin_button"
+        app:layout_constraintStart_toEndOf="@+id/part_pin_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />

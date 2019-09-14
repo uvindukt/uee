@@ -3,6 +3,7 @@ package com.uee.riyasewana.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,6 +17,7 @@ public class VehicleRecyclerAdapter extends RecyclerView.Adapter<VehicleViewHold
 
     private List<Vehicle> vehicles;
     private OnVehicleListener vehicleListener;
+    private View v;
 
     public VehicleRecyclerAdapter(List<Vehicle> vehicles, OnVehicleListener vehicleListener) {
         this.vehicles = vehicles;
@@ -25,12 +27,13 @@ public class VehicleRecyclerAdapter extends RecyclerView.Adapter<VehicleViewHold
     @NonNull
     @Override
     public VehicleViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_list, parent, false);
+        v = LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_list, parent, false);
         return new VehicleViewHolder(v, vehicleListener);
     }
 
     @Override
     public void onBindViewHolder(@NonNull VehicleViewHolder holder, int position) {
+        holder.itemView.setAnimation(AnimationUtils.loadAnimation(v.getContext(), R.anim.anim_scale_transition));
         holder.imageView.setImageResource(vehicles.get(position).getImageDrawable());
         holder.name.setText(vehicles.get(position).getName());
         holder.price.setText(vehicles.get(position).getPrice());
